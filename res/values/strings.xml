@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">PlusVieux</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Le pingouin ou le manchot</string>
+    <string name="description_logo">Logo</string>
+    <string name="description_cadre">Cadre</string>
+
+</resources>
