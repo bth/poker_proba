@@ -19,12 +19,19 @@ public class Carte {
 	}
 	
 	public static enum Couleur {
-		ROUGE,
-		NOIR
+		COEUR,
+		PIQUE,
+		TREFLE,
+		CARREAU
 	}
 	
 	protected Hauteur hauteur;	
 	protected Couleur couleur;
+	
+	public Carte(Hauteur hauteur, Couleur couleur) {
+		setHauteur(hauteur);
+		setCouleur(couleur);
+	}
 	
 	public Hauteur getHauteur() {
 		return hauteur;

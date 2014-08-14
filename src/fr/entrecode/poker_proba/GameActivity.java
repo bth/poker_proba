@@ -14,7 +14,11 @@ public class GameActivity extends Activity {
     }
     
     private void init() {
+    	Carte carte1 = new Carte(Carte.Hauteur.AS, Carte.Couleur.PIQUE);
+    	Carte carte2 = new Carte(Carte.Hauteur.ROI, Carte.Couleur.COEUR);
     	
+    	Main main = new Main(carte1, carte2);
+    	main.getProbabilite();
     }    
 
 }
