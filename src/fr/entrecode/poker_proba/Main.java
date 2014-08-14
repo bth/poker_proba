@@ -71,6 +71,53 @@ public class Main {
 			      probabilite = 17.1f;
 
 		// Série 2
+		else if (carteA.getHauteur() == Carte.Hauteur.DIX &&
+			      carteB.getHauteur() == Carte.Hauteur.DIX &&
+			      carteA.getCouleur() != carteB.getCouleur())
+			      probabilite = 17.1f;
+		else if (carteA.getHauteur() == Carte.Hauteur.DAME &&
+			      carteB.getHauteur() == Carte.Hauteur.VALET &&
+			      carteA.getCouleur() == carteB.getCouleur())
+			      probabilite = 17.1f;
+		else if (carteA.getHauteur() == Carte.Hauteur.ROI &&
+			      carteB.getHauteur() == Carte.Hauteur.DIX &&
+			      carteA.getCouleur() == carteB.getCouleur())
+			      probabilite = 16.9f;
+		else if (carteA.getHauteur() == Carte.Hauteur.VALET &&
+			      carteB.getHauteur() == Carte.Hauteur.DIX &&
+			      carteA.getCouleur() == carteB.getCouleur())
+			      probabilite = 16.6f;
+		else if (carteA.getHauteur() == Carte.Hauteur.DAME &&
+			      carteB.getHauteur() == Carte.Hauteur.DIX &&
+			      carteA.getCouleur() == carteB.getCouleur())
+			      probabilite = 16.5f;
+		else if (carteA.getHauteur() == Carte.Hauteur.AS &&
+			      carteB.getHauteur() == Carte.Hauteur.DAME &&
+			      carteA.getCouleur() != carteB.getCouleur())
+			      probabilite = 15.5f;
+		else if (carteA.getHauteur() == Carte.Hauteur.NEUF &&
+			      carteB.getHauteur() == Carte.Hauteur.NEUF &&
+			      carteA.getCouleur() != carteB.getCouleur())
+			      probabilite = 15.5f;
+		else if (carteA.getHauteur() == Carte.Hauteur.AS &&
+			      carteB.getHauteur() == Carte.Hauteur.NEUF &&
+			      carteA.getCouleur() == carteB.getCouleur())
+			      probabilite = 15.3f;
+		else if (carteA.getHauteur() == Carte.Hauteur.ROI &&
+			      carteB.getHauteur() == Carte.Hauteur.DAME &&
+			      carteA.getCouleur() != carteB.getCouleur())
+			      probabilite = 15.0f;
+		else if (carteA.getHauteur() == Carte.Hauteur.DIX &&
+			      carteB.getHauteur() == Carte.Hauteur.NEUF &&
+			      carteA.getCouleur() == carteB.getCouleur())
+			      probabilite = 14.8f;
+		else if (carteA.getHauteur() == Carte.Hauteur.ROI &&
+			      carteB.getHauteur() == Carte.Hauteur.NEUF &&
+			      carteA.getCouleur() == carteB.getCouleur())
+			      probabilite = 14.8f;
+			  
+			  
+
 			  
 		return probabilite;
 	}
