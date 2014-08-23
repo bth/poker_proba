@@ -2,6 +2,7 @@ package fr.entrecode.poker_proba;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Gallery;
 
 
 public class GameActivity extends Activity {
@@ -14,6 +15,8 @@ public class GameActivity extends Activity {
     }
     
     private void init() {
+    	
+    	
     	Carte carte1 = new Carte(Carte.Hauteur.AS, Carte.Couleur.PIQUE);
     	Carte carte2 = new Carte(Carte.Hauteur.ROI, Carte.Couleur.COEUR);
     	
