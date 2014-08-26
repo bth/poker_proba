@@ -17,7 +17,6 @@
 	    <ScrollView	        
 	        android:layout_width="155dp"
 	        android:layout_height="209dp" 
-	        android:background="#0000ff"
 	        android:scrollbars="none">
 	        
 	        <LinearLayout
@@ -32,32 +31,13 @@
 	    <ScrollView
 	        android:layout_width="155dp"
 	        android:layout_height="209dp" 
-	        android:background="#0000ff"
 	        android:scrollbars="none">
 	        
 	        <LinearLayout
             	android:id="@+id/carte2"
 	            android:layout_width="fill_parent"
 	            android:layout_height="209dp"
-	            android:background="#ff0000"
 	            android:orientation="vertical" >
-	
-	            <ImageView
-	                android:layout_width="fill_parent"
-	                android:layout_height="215dp"
-	                android:layout_weight="0.04"
-	                android:background="#00ff00"
-	                android:src="@drawable/c2" />
-	
-	            <ImageView
-	                android:layout_width="fill_parent"
-	                android:layout_height="215dp"
-	                android:src="@drawable/c3" />
-	
-	            <ImageView
-	                android:layout_width="fill_parent"
-	                android:layout_height="215dp"
-	                android:src="@drawable/c4" />
 	        </LinearLayout>
 	        
 	    </ScrollView>
