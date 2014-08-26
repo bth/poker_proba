@@ -100,6 +100,7 @@
 		    	android:layout_weight="0.43"/>
 	    
 	    <TextView
+	        android:id="@+id/pourcentage"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:gravity="center_vertical|center_horizontal"

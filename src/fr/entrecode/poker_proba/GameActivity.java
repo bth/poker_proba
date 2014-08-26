@@ -5,12 +5,15 @@ import java.util.Iterator;
 import java.util.List;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.sax.TextElementListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 public class GameActivity extends Activity {
@@ -34,6 +37,8 @@ public class GameActivity extends Activity {
     	LinearLayout listeCarte2 = (LinearLayout) findViewById(R.id.carte2);
     	remplirListe(listeCarte1, Carte.Couleur.PIQUE);
     	remplirListe(listeCarte2, Carte.Couleur.COEUR);
+    	
+    	afficherPourcentage(30);
     }
     
     private void remplirListe(ViewGroup liste, Carte.Couleur couleur) {
@@ -63,14 +68,24 @@ public class GameActivity extends Activity {
     		ajouterImageAListe(prefixeCouleur + iterateurPrefixeFigure.next(), liste);				
 		}    	
     }
-    
-    
+        
     private void ajouterImageAListe(String nomImage, ViewGroup liste) {
     	ImageView image = new ImageView(getApplicationContext());
     	int id = getResources().getIdentifier(nomImage, "drawable", getPackageName());
     	image.setImageResource(id);
     	image.setAdjustViewBounds(true);
     	liste.addView(image);
+    }
+    
+    private void afficherPourcentage(float pourcentage) {
+    	TextView pourcentageTexte = (TextView) findViewById(R.id.pourcentage);
+    	pourcentageTexte.setText(String.valueOf(pourcentage) + "%");    	
+    	pourcentageTexte.setTextColor(Color.parseColor(couleurDuPourcentage(pourcentage)));
+    }
+    
+    private String couleurDuPourcentage(float pourcentage) {
+    	String couleur = "#ffffff";
+    	return couleur;
     }
 
 }
