@@ -31,13 +31,13 @@
 		
 		    <ScrollView	        
 		        android:layout_width="155dp"
-		        android:layout_height="209dp" 
+		        android:layout_height="230dp" 
 		        android:scrollbars="none">
 		        
 		        <LinearLayout
 		            android:id="@+id/carte1"
 		            android:layout_width="wrap_content"
-		            android:layout_height="209dp"
+		            android:layout_height="230dp"
 		            android:orientation="vertical" >
 		        </LinearLayout>
 		        
@@ -50,13 +50,13 @@
 		    
 		    <ScrollView
 		        android:layout_width="155dp"
-		        android:layout_height="209dp" 
+		        android:layout_height="230dp" 
 		        android:scrollbars="none">
 		        
 		        <LinearLayout
 	            	android:id="@+id/carte2"
 		            android:layout_width="fill_parent"
-		            android:layout_height="209dp"
+		            android:layout_height="230dp"
 		            android:orientation="vertical" >
 		        </LinearLayout>
 		        
