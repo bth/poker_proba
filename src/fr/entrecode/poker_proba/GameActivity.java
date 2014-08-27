@@ -38,7 +38,7 @@ public class GameActivity extends Activity {
     	remplirListe(listeCarte1, Carte.Couleur.PIQUE);
     	remplirListe(listeCarte2, Carte.Couleur.COEUR);
     	
-    	afficherPourcentage(30);
+    	afficherPourcentage(50);
     }
     
     private void remplirListe(ViewGroup liste, Carte.Couleur couleur) {
@@ -79,13 +79,19 @@ public class GameActivity extends Activity {
     
     private void afficherPourcentage(float pourcentage) {
     	TextView pourcentageTexte = (TextView) findViewById(R.id.pourcentage);
-    	pourcentageTexte.setText(String.valueOf(pourcentage) + "%");    	
-    	pourcentageTexte.setTextColor(Color.parseColor(couleurDuPourcentage(pourcentage)));
+    	pourcentageTexte.setText(String.valueOf(pourcentage) + "%");
+    	int[] composantes = couleurDuPourcentage(pourcentage);
+    	pourcentageTexte.setTextColor(Color.rgb(composantes[0], composantes[1], 0));
     }
     
-    private String couleurDuPourcentage(float pourcentage) {
-    	String couleur = "#ffffff";
-    	return couleur;
+    private int[] couleurDuPourcentage(float pourcentage) {    	
+    	int composanteRouge = 0xFF;
+    	int composanteVerte = 0xFF;
+    	int valeurMax = 100;
+    	composanteVerte = Math.round(pourcentage * (0xFF / valeurMax));
+    	composanteRouge = 0xFF - Math.round(pourcentage * (0xFF / valeurMax));
+    	int[] composantes = {composanteRouge, composanteVerte};
+    	return composantes;
     }
 
 }
