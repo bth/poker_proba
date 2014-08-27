@@ -38,7 +38,7 @@ public class GameActivity extends Activity {
     	remplirListe(listeCarte1, Carte.Couleur.PIQUE);
     	remplirListe(listeCarte2, Carte.Couleur.COEUR);
     	
-    	afficherPourcentage(50);
+    	afficherPourcentage(10);
     }
     
     private void remplirListe(ViewGroup liste, Carte.Couleur couleur) {
