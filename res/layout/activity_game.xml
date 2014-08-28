@@ -29,7 +29,8 @@
 		    	android:layout_height="fill_parent"
 		    	android:layout_weight="0.43"/>
 		
-		    <ScrollView	        
+		    <fr.entrecode.poker_proba.MyScrollView
+		        android:id="@+id/scrollcarte1"        
 		        android:layout_width="155dp"
 		        android:layout_height="230dp" 
 		        android:scrollbars="none">
@@ -41,7 +42,7 @@
 		            android:orientation="vertical" >
 		        </LinearLayout>
 		        
-		    </ScrollView>
+		    </fr.entrecode.poker_proba.MyScrollView>
 		    
 		    <LinearLayout 
 		        android:layout_width="wrap_content"

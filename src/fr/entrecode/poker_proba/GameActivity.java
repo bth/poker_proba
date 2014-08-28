@@ -4,11 +4,16 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import fr.entrecode.poker_proba.MyScrollView.OnScrollStoppedListener;
+
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.sax.TextElementListener;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Gallery;
 import android.widget.ImageView;
@@ -39,6 +44,26 @@ public class GameActivity extends Activity {
     	remplirListe(listeCarte2, Carte.Couleur.COEUR);
     	
     	afficherPourcentage(10);
+    	
+    	final MyScrollView scrollCarte1 = (MyScrollView) findViewById(R.id.scrollcarte1);
+    	scrollCarte1.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_UP) {
+					scrollCarte1.startScrollerTask();
+				}
+				return false;
+			}
+		});
+    	scrollCarte1.setOnScrollStoppedListener(new OnScrollStoppedListener() {
+			
+			@Override
+			public void onScrollStopped() {
+				Log.d("TEST", "stopped");
+				
+			}
+		});
     }
     
     private void remplirListe(ViewGroup liste, Carte.Couleur couleur) {
