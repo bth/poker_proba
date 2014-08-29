@@ -13,6 +13,7 @@ public class MyScrollView  extends ScrollView {
 	private int delaisSurveillance = 100;
 	private int anciennePosition = 0;
 	private OnScrollStoppedListener onScrollStoppedListener;
+	private int tailleElements = 0;
 	
 	public interface OnScrollStoppedListener {
 		void onScrollStopped();
@@ -55,8 +56,20 @@ public class MyScrollView  extends ScrollView {
 	
 	public void repositionnerImage() {
 		int position = getScrollY();
-		int tailleElements = getTailleElements();
+		tailleElements = getTailleElements();
 		smoothScrollTo(getScrollX(), ((position+tailleElements/2) / tailleElements)*tailleElements - (getHeight()-tailleElements)/2);
+		getCarteAffichee();
+	}
+	
+	public Carte getCarteAffichee() {
+		Carte carteAffichee = new Carte(Carte.Hauteur.AS, Carte.Couleur.PIQUE);
+		int identifiantCarte = (getScrollY() + tailleElements/2)/tailleElements;
+		ImageView imageCarte = (ImageView)((LinearLayout)getChildAt(0)).getChildAt(identifiantCarte);
+		String descriptionImageCarte = (String) imageCarte.getContentDescription();
+		carteAffichee.setCouleur(Carte.couleurFromString(String.valueOf(descriptionImageCarte.substring(0, 1))));
+		carteAffichee.setHauteur(Carte.hauteurFromString(String.valueOf(descriptionImageCarte.substring(1, descriptionImageCarte.length()))));
+		Log.d("TEST", carteAffichee.toString());
+		return carteAffichee;
 	}
 
 }

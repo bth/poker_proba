@@ -89,9 +89,86 @@ public class Carte {
 		return hauteur;
 	}
 	
+	public static String stringFromCouleur(Couleur couleur) {
+		String couleurString = "";
+		switch (couleur) {
+			case COEUR:
+				couleurString = "c";
+				break;
+			
+			case TREFLE:
+				couleurString = "t";
+				break;
+				
+			case PIQUE:
+				couleurString = "p";
+				break;
+				
+			case CARREAU:
+				couleurString = "ca";
+				break;
+				
+			default:
+				break;
+		}
+		return couleurString;
+	}
+	
+	public static String stringFromHauteur(Hauteur hauteur) {
+		String hauteurString = "a";
+		switch (hauteur) {
+			case AS:
+				hauteurString = "a";
+				break;
+			case ROI:
+				hauteurString = "k";
+				break;	
+			case DAME:
+				hauteurString = "q";
+				break;
+			case VALET:
+				hauteurString = "j";
+				break;
+			case DIX:
+				hauteurString = "10";
+				break;
+			case NEUF:
+				hauteurString = "9";
+				break;
+			case HUIT:
+				hauteurString = "8";
+				break;
+			case SEPT:
+				hauteurString = "7";
+				break;
+			case SIX:
+				hauteurString = "6";
+				break;
+			case CINQ:
+				hauteurString = "5";
+				break;
+			case QUATRE:
+				hauteurString = "4";
+				break;
+			case TROIS:
+				hauteurString = "3";
+				break;
+			case DEUX:
+				hauteurString = "2";
+				break;
+			default:
+				break;
+		}
+		return hauteurString;
+	}
+	
 	public Carte(Hauteur hauteur, Couleur couleur) {
 		setHauteur(hauteur);
 		setCouleur(couleur);
+	}
+	
+	public String toString() {
+		return stringFromCouleur(getCouleur()) + stringFromHauteur(getHauteur());
 	}
 	
 	public Hauteur getHauteur() {
@@ -106,4 +183,5 @@ public class Carte {
 	public void setCouleur(Couleur couleur) {
 		this.couleur = couleur;
 	}
+	
 }

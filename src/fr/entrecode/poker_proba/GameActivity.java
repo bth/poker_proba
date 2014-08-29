@@ -110,26 +110,7 @@ public class GameActivity extends Activity {
     	String prefixeCouleur = "";
     	// On vide la liste
     	liste.removeAllViews();
-    	switch (couleur) {
-			case COEUR:
-				prefixeCouleur = "c";
-				break;
-			
-			case TREFLE:
-				prefixeCouleur = "t";
-				break;
-				
-			case PIQUE:
-				prefixeCouleur = "p";
-				break;
-				
-			case CARREAU:
-				prefixeCouleur = "ca";
-				break;
-				
-			default:
-				break;
-		}
+    	prefixeCouleur = Carte.stringFromCouleur(couleur);    	
     	for (Iterator<String> iterateurPrefixeFigure = listePrefixesFigures.iterator(); iterateurPrefixeFigure.hasNext();) {
     		ajouterImageAListe(prefixeCouleur + iterateurPrefixeFigure.next(), liste);				
 		}    	
@@ -139,6 +120,7 @@ public class GameActivity extends Activity {
     	ImageView image = new ImageView(getApplicationContext());
     	int id = getResources().getIdentifier(nomImage, "drawable", getPackageName());
     	image.setImageResource(id);
+    	image.setContentDescription(nomImage);
     	image.setAdjustViewBounds(true);
     	liste.addView(image);
     }
