@@ -26,6 +26,9 @@ import android.widget.TextView;
 
 public class GameActivity extends Activity {
 	
+	MyScrollView scrollCarte1;
+	MyScrollView scrollCarte2;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +38,7 @@ public class GameActivity extends Activity {
     
     private void init() {
     	
-    	Carte carte1 = new Carte(Carte.Hauteur.AS, Carte.Couleur.PIQUE);
-    	Carte carte2 = new Carte(Carte.Hauteur.ROI, Carte.Couleur.COEUR);
-    	
-    	Main main = new Main(carte1, carte2);
-    	main.getProbabilite();
-    	
-    	LinearLayout listeCarte1 = (LinearLayout) findViewById(R.id.carte1);
+    	final LinearLayout listeCarte1 = (LinearLayout) findViewById(R.id.carte1);
     	final LinearLayout listeCarte2 = (LinearLayout) findViewById(R.id.carte2);
     	remplirListe(listeCarte1, Carte.Couleur.PIQUE);
     	remplirListe(listeCarte2, Carte.Couleur.COEUR);
@@ -49,7 +46,7 @@ public class GameActivity extends Activity {
     	afficherPourcentage(10);
     	
     	// Construction de sélecteur de carte de gauche
-    	final MyScrollView scrollCarte1 = (MyScrollView) findViewById(R.id.scrollcarte1);
+    	scrollCarte1 = (MyScrollView) findViewById(R.id.scrollcarte1);
     	scrollCarte1.setOnTouchListener(new OnTouchListener() {
 			
 			@Override
@@ -65,11 +62,12 @@ public class GameActivity extends Activity {
 			@Override
 			public void onScrollStopped() {
 				scrollCarte1.repositionnerImage();
+				afficherProbabilite();
 			}
 		});
     
 	// Construction de sélecteur de carte de droite
-	final MyScrollView scrollCarte2 = (MyScrollView) findViewById(R.id.scrollcarte2);
+	scrollCarte2 = (MyScrollView) findViewById(R.id.scrollcarte2);
 	scrollCarte2.setOnTouchListener(new OnTouchListener() {
 		
 		@Override
@@ -85,6 +83,7 @@ public class GameActivity extends Activity {
 		@Override
 		public void onScrollStopped() {
 			scrollCarte2.repositionnerImage();
+			afficherProbabilite();
 		}
 	});
 	
@@ -104,6 +103,13 @@ public class GameActivity extends Activity {
 			
 	});
 }
+    
+    private void afficherProbabilite() {
+    	Carte carte1 = scrollCarte1.getCarteAffichee();
+    	Carte carte2 = scrollCarte2.getCarteAffichee();
+    	Main main = new Main(carte1, carte2);
+    	afficherPourcentage(main.getProbabilite());
+    }
 
     private void remplirListe(ViewGroup liste, Carte.Couleur couleur) {
     	List<String> listePrefixesFigures = Arrays.asList("a", "k", "q", "j", "10", "9", "8", "7", "6", "5", "4", "3", "2");

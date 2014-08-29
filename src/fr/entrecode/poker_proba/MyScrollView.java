@@ -63,6 +63,7 @@ public class MyScrollView  extends ScrollView {
 	
 	public Carte getCarteAffichee() {
 		Carte carteAffichee = new Carte(Carte.Hauteur.AS, Carte.Couleur.PIQUE);
+		tailleElements = getTailleElements();
 		int identifiantCarte = (getScrollY() + tailleElements/2)/tailleElements;
 		ImageView imageCarte = (ImageView)((LinearLayout)getChildAt(0)).getChildAt(identifiantCarte);
 		String descriptionImageCarte = (String) imageCarte.getContentDescription();
