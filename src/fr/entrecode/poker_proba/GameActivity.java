@@ -45,6 +45,7 @@ public class GameActivity extends Activity {
     	
     	afficherPourcentage(10);
     	
+    	// Construction de sélecteur de carte de gauche
     	final MyScrollView scrollCarte1 = (MyScrollView) findViewById(R.id.scrollcarte1);
     	scrollCarte1.setOnTouchListener(new OnTouchListener() {
 			
@@ -60,11 +61,31 @@ public class GameActivity extends Activity {
 			
 			@Override
 			public void onScrollStopped() {
-				Log.d("TEST", "stopped");
 				scrollCarte1.repositionnerImage();
 			}
 		});
-    }
+    
+	// Construction de sélecteur de carte de droite
+	final MyScrollView scrollCarte2 = (MyScrollView) findViewById(R.id.scrollcarte2);
+	scrollCarte2.setOnTouchListener(new OnTouchListener() {
+		
+		@Override
+		public boolean onTouch(View v, MotionEvent event) {
+			if (event.getAction() == MotionEvent.ACTION_UP) {
+				scrollCarte2.startScrollerTask();
+			}
+			return false;
+		}
+	});
+	scrollCarte2.setOnScrollStoppedListener(new OnScrollStoppedListener() {
+		
+		@Override
+		public void onScrollStopped() {
+			scrollCarte2.repositionnerImage();
+		}
+	});
+}
+
     
     private void remplirListe(ViewGroup liste, Carte.Couleur couleur) {
     	List<String> listePrefixesFigures = Arrays.asList("a", "k", "q", "j", "10", "9", "8", "7", "6", "5", "4", "3", "2");
