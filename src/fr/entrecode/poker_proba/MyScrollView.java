@@ -56,7 +56,7 @@ public class MyScrollView  extends ScrollView {
 	public void repositionnerImage() {
 		int position = getScrollY();
 		int tailleElements = getTailleElements();
-		smoothScrollTo(getScrollX(), ((position+tailleElements/2) / tailleElements)*tailleElements);
+		smoothScrollTo(getScrollX(), ((position+tailleElements/2) / tailleElements)*tailleElements - (getHeight()-tailleElements)/2);
 	}
 
 }
