@@ -61,7 +61,7 @@ public class GameActivity extends Activity {
 			@Override
 			public void onScrollStopped() {
 				Log.d("TEST", "stopped");
-				
+				scrollCarte1.repositionnerImage();
 			}
 		});
     }
