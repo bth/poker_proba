@@ -4,7 +4,7 @@ public class Main {
 	
 	private Carte carteA;
 	private Carte carteB;
-	private float probabilite;
+	private float probabilite = -1f;
 	
 	public Main(Carte carteA, Carte carteB) {
 		this.carteA = carteA;
@@ -23,7 +23,7 @@ public class Main {
 	public void setCarteB(Carte carteB) {
 		this.carteB = carteB;
 	}
-	public float getProbabilite() {
+	public float getProbabilite() { 
 		// Série 1
 			  if (carteA.getHauteur() == Carte.Hauteur.AS &&
 			      carteB.getHauteur() == Carte.Hauteur.AS &&
@@ -162,6 +162,12 @@ public class Main {
 			      carteA.getCouleur() != carteB.getCouleur())
 			      probabilite = 13.9f;
 
+		if(probabilite == -1f) {
+			Carte carteTmp = carteA;
+			carteA = carteB;
+			carteB = carteTmp;
+			probabilite = getProbabilite();
+		}
 			  
 		return probabilite;
 	}
