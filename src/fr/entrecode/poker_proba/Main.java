@@ -23,7 +23,9 @@ public class Main {
 	public void setCarteB(Carte carteB) {
 		this.carteB = carteB;
 	}
-	public float getProbabilite() { 
+	public float getProbabilite() {
+		DictionnaireProbabilites.getInstance();
+		/*
 		// Série 1
 			  if (carteA.getHauteur() == Carte.Hauteur.AS &&
 			      carteB.getHauteur() == Carte.Hauteur.AS &&
@@ -40,15 +42,15 @@ public class Main {
 		else if (carteA.getHauteur() == Carte.Hauteur.AS &&
 			      carteB.getHauteur() == Carte.Hauteur.ROI &&
 			      carteA.getCouleur() == carteB.getCouleur())
-			      probabilite = 20.6f;
-		else if (carteA.getHauteur() == Carte.Hauteur.VALET &&
-			      carteB.getHauteur() == Carte.Hauteur.VALET &&
-			      carteA.getCouleur() != carteB.getCouleur())
-			      probabilite = 19.3f;
+			      probabilite = 20.7f;
 		else if (carteA.getHauteur() == Carte.Hauteur.AS &&
 			      carteB.getHauteur() == Carte.Hauteur.DAME &&
 			      carteA.getCouleur() == carteB.getCouleur())
-			      probabilite = 19.2f;
+			      probabilite = 19.3f;
+		else if (carteA.getHauteur() == Carte.Hauteur.VALET &&
+			      carteB.getHauteur() == Carte.Hauteur.VALET &&
+			      carteA.getCouleur() != carteB.getCouleur())
+			      probabilite = 19.3f;			  
 		else if (carteA.getHauteur() == Carte.Hauteur.ROI &&
 			      carteB.getHauteur() == Carte.Hauteur.DAME &&
 			      carteA.getCouleur() == carteB.getCouleur())
@@ -161,6 +163,8 @@ public class Main {
 			      carteB.getHauteur() == Carte.Hauteur.VALET &&
 			      carteA.getCouleur() != carteB.getCouleur())
 			      probabilite = 13.9f;
+		*/
+		probabilite = DictionnaireProbabilites.getProbabilite("aa", 6);
 
 		if(probabilite == -1f) {
 			Carte carteTmp = carteA;

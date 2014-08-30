@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class DictionnaireProbabilites {
 	
-	Map<String, Map<Integer, Float>> dictionnaire = new HashMap<String, Map<Integer,Float>>();
+	static Map<String, Map<Integer, Float>> dictionnaire = new HashMap<String, Map<Integer,Float>>();
 	
 	private DictionnaireProbabilites(){
 		//                  id     2       3       4       5       6       7       8       9      10
@@ -34,5 +34,14 @@ public class DictionnaireProbabilites {
 			dictionnaire.put(identifiant, probabilites);
 		}
 	}
-
+	
+	public static float getProbabilite(String identifiant, Integer nombreJoueurs) {
+		float probabilite = 0.0f;
+		if (dictionnaire.containsKey(identifiant)) {
+			if(dictionnaire.get(identifiant).containsKey(nombreJoueurs)) {
+				probabilite = dictionnaire.get(identifiant).get(nombreJoueurs);
+			}
+		}
+		return probabilite;
+	}
 }
