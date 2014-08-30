@@ -62,7 +62,7 @@ public class GameActivity extends Activity {
 			@Override
 			public void onScrollStopped() {
 				scrollCarte1.repositionnerImage();
-				afficherProbabilite();
+				mettreAJourProbabilite();
 			}
 		});
     
@@ -83,7 +83,7 @@ public class GameActivity extends Activity {
 		@Override
 		public void onScrollStopped() {
 			scrollCarte2.repositionnerImage();
-			afficherProbabilite();
+			mettreAJourProbabilite();
 		}
 	});
 	
@@ -99,12 +99,13 @@ public class GameActivity extends Activity {
 			else {
 				remplirListe(listeCarte2, Carte.Couleur.COEUR);
 			}
+			mettreAJourProbabilite();
 		}
 			
 	});
 }
     
-    private void afficherProbabilite() {
+    private void mettreAJourProbabilite() {
     	Carte carte1 = scrollCarte1.getCarteAffichee();
     	Carte carte2 = scrollCarte2.getCarteAffichee();
     	Main main = new Main(carte1, carte2);
@@ -119,7 +120,7 @@ public class GameActivity extends Activity {
     	prefixeCouleur = Carte.stringFromCouleur(couleur);    	
     	for (Iterator<String> iterateurPrefixeFigure = listePrefixesFigures.iterator(); iterateurPrefixeFigure.hasNext();) {
     		ajouterImageAListe(prefixeCouleur + iterateurPrefixeFigure.next(), liste);				
-		}    	
+		}
     }
         
     private void ajouterImageAListe(String nomImage, ViewGroup liste) {
