@@ -13,7 +13,7 @@ public class MyScrollView  extends ScrollView {
 	private int delaisSurveillance = 100;
 	private int anciennePosition = 0;
 	private OnScrollStoppedListener onScrollStoppedListener;
-	private int tailleElements = 0;
+	private int tailleElements = 215;
 	
 	public interface OnScrollStoppedListener {
 		void onScrollStopped();
