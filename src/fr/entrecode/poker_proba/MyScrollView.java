@@ -70,7 +70,6 @@ public class MyScrollView  extends ScrollView {
 		String descriptionImageCarte = (String) imageCarte.getContentDescription();
 		carteAffichee.setCouleur(Carte.couleurFromString(String.valueOf(descriptionImageCarte.substring(0, 1))));
 		carteAffichee.setHauteur(Carte.hauteurFromString(String.valueOf(descriptionImageCarte.substring(1, descriptionImageCarte.length()))));
-		Log.d("TEST", carteAffichee.toString());
 		return carteAffichee;
 	}
 
