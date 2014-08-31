@@ -94,7 +94,8 @@ public class GameActivity extends Activity {
 		@Override
 		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 			if (isChecked) {
-				remplirListe(listeCarte2, Carte.Couleur.PIQUE);
+				Carte carte1 = scrollCarte1.getCarteAffichee();
+				remplirListe(listeCarte2, Carte.Couleur.PIQUE, carte1.getHauteur());
 			}
 			else {
 				remplirListe(listeCarte2, Carte.Couleur.COEUR);
@@ -111,16 +112,28 @@ public class GameActivity extends Activity {
     	Main main = new Main(carte1, carte2);
     	afficherPourcentage(main.getProbabilite());
     }
-
-    private void remplirListe(ViewGroup liste, Carte.Couleur couleur) {
-    	List<String> listePrefixesFigures = Arrays.asList("a", "k", "q", "j", "10", "9", "8", "7", "6", "5", "4", "3", "2");
-    	String prefixeCouleur = "";
+    
+    private void remplirListe(ViewGroup liste, Carte.Couleur couleur, Carte.Hauteur exclu) {
+		List<String> listePrefixesFigures = Arrays.asList("a", "k", "q", "j", "10", "9", "8", "7", "6", "5", "4", "3", "2");
+		String prefixeCouleur = "";
+		String carteAExclure = "";
+		// On détermine la carte à exclure
+		if (exclu != null) {
+			carteAExclure = Carte.stringFromHauteur(exclu);
+		}
     	// On vide la liste
     	liste.removeAllViews();
-    	prefixeCouleur = Carte.stringFromCouleur(couleur);    	
+    	prefixeCouleur = Carte.stringFromCouleur(couleur);
     	for (Iterator<String> iterateurPrefixeFigure = listePrefixesFigures.iterator(); iterateurPrefixeFigure.hasNext();) {
-    		ajouterImageAListe(prefixeCouleur + iterateurPrefixeFigure.next(), liste);				
+    		String hauteur = iterateurPrefixeFigure.next();
+    		if (!hauteur.equals(carteAExclure)) {
+    			ajouterImageAListe(prefixeCouleur + hauteur, liste);
+    		}
 		}
+    }
+
+    private void remplirListe(ViewGroup liste, Carte.Couleur couleur) {
+    	remplirListe(liste, couleur, null);
     }
         
     private void ajouterImageAListe(String nomImage, ViewGroup liste) {
