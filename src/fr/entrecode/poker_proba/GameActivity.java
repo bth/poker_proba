@@ -40,6 +40,7 @@ public class GameActivity extends Activity {
     	
     	final LinearLayout listeCarte1 = (LinearLayout) findViewById(R.id.carte1);
     	final LinearLayout listeCarte2 = (LinearLayout) findViewById(R.id.carte2);
+    	final CheckBox caseACocherConnexion = (CheckBox) findViewById(R.id.connexion);
     	remplirListe(listeCarte1, Carte.Couleur.PIQUE);
     	remplirListe(listeCarte2, Carte.Couleur.COEUR);
     	
@@ -62,10 +63,14 @@ public class GameActivity extends Activity {
 			@Override
 			public void onScrollStopped() {
 				scrollCarte1.repositionnerImage();
+				if (caseACocherConnexion.isChecked()) {
+					Carte carte1 = scrollCarte1.getCarteAffichee();
+					remplirListe(listeCarte2, Carte.Couleur.PIQUE, carte1.getHauteur());
+				}
 				mettreAJourProbabilite();
 			}
 		});
-    
+    	
 	// Construction de sélecteur de carte de droite
 	scrollCarte2 = (MyScrollView) findViewById(R.id.scrollcarte2);
 	scrollCarte2.setOnTouchListener(new OnTouchListener() {
@@ -88,7 +93,6 @@ public class GameActivity extends Activity {
 	});
 	
 	// Initialisation de la case à cocher de connexion entre les cartes
-	CheckBox caseACocherConnexion = (CheckBox) findViewById(R.id.connexion);
 	caseACocherConnexion.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 		@Override
