@@ -142,7 +142,7 @@ public class GameActivity extends Activity {
     private int[] couleurDuPourcentage(float pourcentage) {    	
     	int composanteRouge = 0xFF;
     	int composanteVerte = 0xFF;
-    	int valeurMax = 100;
+    	int valeurMax = (int)DictionnaireProbabilites.getProbabilite("aa", 6);
     	composanteVerte = Math.round(pourcentage * (0xFF / valeurMax));
     	composanteRouge = 0xFF - Math.round(pourcentage * (0xFF / valeurMax));
     	int[] composantes = {composanteRouge, composanteVerte};

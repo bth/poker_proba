@@ -204,7 +204,7 @@ public class DictionnaireProbabilites {
 	}
 	
 	public static float getProbabilite(String identifiant, Integer nombreJoueurs) {
-		float probabilite = 0.0f;
+		float probabilite = -1f;
 		if (dictionnaire.containsKey(identifiant)) {
 			if(dictionnaire.get(identifiant).containsKey(nombreJoueurs)) {
 				probabilite = dictionnaire.get(identifiant).get(nombreJoueurs);
