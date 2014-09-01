@@ -64,9 +64,11 @@ public class GameActivity extends Activity {
 			@Override
 			public void onScrollStopped() {
 				scrollCarte1.repositionnerImage();
-				if (caseACocherConnexion.isChecked()) {
+				if (caseACocherConnexion.isChecked()) {					
 					Carte carte1 = scrollCarte1.getCarteAffichee();
+					Carte carte2 = scrollCarte2.getCarteAffichee();
 					remplirListe(listeCarte2, Carte.Couleur.PIQUE, carte1.getHauteur());
+					scrollCarte2.positionnerSurHauteur(carte2.getHauteur());
 				}
 				mettreAJourProbabilite();
 			}
