@@ -55,9 +55,10 @@ public class MyScrollView  extends ScrollView {
 	
 	public void repositionnerImage() {
 		int position = getScrollY();
-		tailleElements = getTailleElements();
+		if (tailleElements == 0) {
+			tailleElements = getTailleElements();
+		}
 		smoothScrollTo(getScrollX(), ((position+tailleElements/2) / tailleElements)*tailleElements - (getHeight()-tailleElements)/2);
-		getCarteAffichee();
 	}
 	
 	public Carte getCarteAffichee() {
@@ -82,7 +83,7 @@ public class MyScrollView  extends ScrollView {
 			String descriptionImageCarte = (String) imageCarte.getContentDescription();
 			Carte.Hauteur hauteurCandidate = Carte.hauteurFromString(String.valueOf(descriptionImageCarte.substring(1, descriptionImageCarte.length())));
 			if (hauteurCandidate == hauteurCherchee) {
-				int scrollY = (identifiantCarte * tailleElements);
+				int scrollY = (identifiantCarte * tailleElements) - (getHeight()-tailleElements)/2;
 				scrollTo(getScrollX(), scrollY);
 				break;
 			}
