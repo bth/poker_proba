@@ -67,10 +67,26 @@ public class MyScrollView  extends ScrollView {
 		}
 		int identifiantCarte = (getScrollY() + tailleElements/2)/tailleElements;
 		ImageView imageCarte = (ImageView)((LinearLayout)getChildAt(0)).getChildAt(identifiantCarte);
-		String descriptionImageCarte = (String) imageCarte.getContentDescription();
-		carteAffichee.setCouleur(Carte.couleurFromString(String.valueOf(descriptionImageCarte.substring(0, 1))));
-		carteAffichee.setHauteur(Carte.hauteurFromString(String.valueOf(descriptionImageCarte.substring(1, descriptionImageCarte.length()))));
+		if (imageCarte != null) {
+			String descriptionImageCarte = (String) imageCarte.getContentDescription();
+			carteAffichee.setCouleur(Carte.couleurFromString(String.valueOf(descriptionImageCarte.substring(0, 1))));
+			carteAffichee.setHauteur(Carte.hauteurFromString(String.valueOf(descriptionImageCarte.substring(1, descriptionImageCarte.length()))));
+		}
 		return carteAffichee;
+	}
+	
+	public void positionnerSurHauteur(Carte.Hauteur hauteurCherchee) {
+		int nombreCartes = ((LinearLayout)getChildAt(0)).getChildCount();
+		for (int identifiantCarte=0 ; identifiantCarte<nombreCartes ; identifiantCarte++) {
+			ImageView imageCarte = (ImageView)((LinearLayout)getChildAt(0)).getChildAt(identifiantCarte);
+			String descriptionImageCarte = (String) imageCarte.getContentDescription();
+			Carte.Hauteur hauteurCandidate = Carte.hauteurFromString(String.valueOf(descriptionImageCarte.substring(1, descriptionImageCarte.length())));
+			if (hauteurCandidate == hauteurCherchee) {
+				int scrollY = (identifiantCarte * tailleElements);
+				scrollTo(getScrollX(), scrollY);
+				break;
+			}
+		}
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import fr.entrecode.poker_proba.Carte.Hauteur;
 import fr.entrecode.poker_proba.MyScrollView.OnScrollStoppedListener;
 
 import android.app.Activity;
@@ -97,13 +98,15 @@ public class GameActivity extends Activity {
 
 		@Override
 		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+			Carte carte2 = scrollCarte2.getCarteAffichee();
 			if (isChecked) {
-				Carte carte1 = scrollCarte1.getCarteAffichee();
+				Carte carte1 = scrollCarte1.getCarteAffichee();				
 				remplirListe(listeCarte2, Carte.Couleur.PIQUE, carte1.getHauteur());
 			}
 			else {
 				remplirListe(listeCarte2, Carte.Couleur.COEUR);
 			}
+			scrollCarte2.positionnerSurHauteur(carte2.getHauteur());
 			mettreAJourProbabilite();
 		}
 			
