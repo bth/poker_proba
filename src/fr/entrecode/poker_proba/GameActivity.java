@@ -4,13 +4,11 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import fr.entrecode.poker_proba.Carte.Hauteur;
 import fr.entrecode.poker_proba.MyScrollView.OnScrollStoppedListener;
 
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.sax.TextElementListener;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -134,6 +131,7 @@ public class GameActivity extends Activity {
 		}
 			
 	});
+	mettreAJourProbabilite();
 }
     
     private void mettreAJourProbabilite() {
