@@ -45,8 +45,6 @@ public class GameActivity extends Activity {
     	remplirListe(listeCarte1, Carte.Couleur.PIQUE);
     	remplirListe(listeCarte2, Carte.Couleur.COEUR);
     	
-    	afficherPourcentage(10);
-    	
     	// Construction de sélecteur de carte de gauche
     	scrollCarte1 = (MyScrollView) findViewById(R.id.scrollcarte1);
     	scrollCarte1.setOnTouchListener(new OnTouchListener() {
@@ -183,7 +181,7 @@ public class GameActivity extends Activity {
     private int[] couleurDuPourcentage(float pourcentage) {    	
     	int composanteRouge = 0xFF;
     	int composanteVerte = 0xFF;
-    	int valeurMax = (int)DictionnaireProbabilites.getProbabilite("aa", 6);
+    	int valeurMax = (int)DictionnaireProbabilites.getProbabilite("aa", barreNombreJoueurs.getProgress() + 2);
     	composanteVerte = Math.round(pourcentage * (0xFF / valeurMax));
     	composanteRouge = 0xFF - Math.round(pourcentage * (0xFF / valeurMax));
     	int[] composantes = {composanteRouge, composanteVerte};
