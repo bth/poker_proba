@@ -23,15 +23,15 @@ public class Main {
 	public void setCarteB(Carte carteB) {
 		this.carteB = carteB;
 	}
-	public float getProbabilite() {
+	public float getProbabilite(int nombreJoueurs) {
 		String clefMain = getClefMain();
-		probabilite = DictionnaireProbabilites.getProbabilite(clefMain, 6);
+		probabilite = DictionnaireProbabilites.getProbabilite(clefMain, nombreJoueurs);
 
 		if(probabilite == -1f) {
 			Carte carteTmp = carteA;
 			carteA = carteB;
 			carteB = carteTmp;
-			probabilite = getProbabilite();
+			probabilite = getProbabilite(nombreJoueurs);
 		}
 			  
 		return probabilite;

@@ -22,6 +22,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 
@@ -29,6 +31,7 @@ public class GameActivity extends Activity {
 	
 	MyScrollView scrollCarte1;
 	MyScrollView scrollCarte2;
+	SeekBar barreNombreJoueurs;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,6 +98,24 @@ public class GameActivity extends Activity {
 		}
 	});
 	
+	// Initialiation de la barre de sélection du nombre de joueur
+	barreNombreJoueurs = (SeekBar) findViewById(R.id.nombre_joueurs);
+	barreNombreJoueurs.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+		
+		@Override
+		public void onStopTrackingTouch(SeekBar seekBar) {			
+		}
+		
+		@Override
+		public void onStartTrackingTouch(SeekBar seekBar) {
+		}
+		
+		@Override
+		public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+			mettreAJourProbabilite();
+		}
+	});
+	
 	// Initialisation de la case à cocher de connexion entre les cartes
 	caseACocherConnexion.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -119,7 +140,7 @@ public class GameActivity extends Activity {
     	Carte carte1 = scrollCarte1.getCarteAffichee();
     	Carte carte2 = scrollCarte2.getCarteAffichee();
     	Main main = new Main(carte1, carte2);
-    	afficherPourcentage(main.getProbabilite());
+    	afficherPourcentage(main.getProbabilite(barreNombreJoueurs.getProgress() + 2));
     }
     
     private void remplirListe(ViewGroup liste, Carte.Couleur couleur, Carte.Hauteur exclu) {
