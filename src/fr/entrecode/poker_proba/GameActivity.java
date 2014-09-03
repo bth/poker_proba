@@ -182,8 +182,8 @@ public class GameActivity extends Activity {
     	int composanteRouge = 0xFF;
     	int composanteVerte = 0xFF;
     	int valeurMax = (int)DictionnaireProbabilites.getProbabilite("aa", barreNombreJoueurs.getProgress() + 2);
-    	composanteVerte = Math.round(pourcentage * (0xFF / valeurMax));
-    	composanteRouge = 0xFF - Math.round(pourcentage * (0xFF / valeurMax));
+    	composanteVerte = Math.min(0xFF, Math.round(pourcentage * (0xFF / valeurMax)));
+    	composanteRouge = 0xFF - composanteVerte;
     	int[] composantes = {composanteRouge, composanteVerte};
     	return composantes;
     }
